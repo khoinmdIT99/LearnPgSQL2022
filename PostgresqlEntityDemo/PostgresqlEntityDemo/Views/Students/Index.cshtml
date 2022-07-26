@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PostgresqlEntityDemo.Models.Students>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Students List</h2>
+        </div>
+         <div class="col-6 text-end" >
+           <a asp-controller="Students" asp-action="Create" class="btn btn-primary"> <i class="bi bi-plus-square"></i> Add Student</a>
+        </div>
+    </div>
+</div>
+
+
+<div>
+     <table class="table table-striped">
+   <thead>
+    <tr>
+      <th scope="col">Index</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">RollNumber</th>
+      <th scope="col">Edit</th>
+      <th scope="col">delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      @foreach(var Item in Model)
+      {
+    <tr>
+      <th scope="row">@Item.Id</th>
+      <td>@Item.FirstName</td>
+      <td>@Item.LastName</td>
+      <td>@Item.RollNumber</td>
+      <td><a class="btn btn-secondary" asp-controller="Students" asp-action="Edit" asp-route-id="@Item.Id" ><i class="bi bi-pencil-square"></i>Edit</a>  </td>
+      <td><a class="btn btn-danger" asp-controller="Students" asp-action="Delete" asp-route-id="@Item.Id"><i class="bi bi-trash"></i>delete</a></td>
+
+    </tr>
+    }
+   
+  </tbody>
+</table>
+</div>
+   
+
+
